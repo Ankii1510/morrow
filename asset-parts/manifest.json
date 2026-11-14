@@ -3,14 +3,7 @@
     {
       "path": "src/app/favicon.ico",
       "parts": [
-        "src__app__favicon.ico.00.framed",
-        "src__app__favicon.ico.01.framed",
-        "src__app__favicon.ico.02.framed",
-        "src__app__favicon.ico.03.framed",
-        "src__app__favicon.ico.04.framed",
-        "src__app__favicon.ico.05.framed",
-        "src__app__favicon.ico.06.framed",
-        "src__app__favicon.ico.07.framed"
+        "src__app__favicon.ico.00.b64"
       ],
       "sha256": "c28fdd2a4f31e2dc64f653962286da5c82a4cdfc518b242d32812c624e9a19a4",
       "size": 15086
@@ -18,14 +11,8 @@
     {
       "path": "docs/screenshots/01-library.jpg",
       "parts": [
-        "docs__screenshots__01-library.jpg.00.00.b64",
-        "docs__screenshots__01-library.jpg.00.01.b64",
-        "docs__screenshots__01-library.jpg.rest.00.framed",
-        "docs__screenshots__01-library.jpg.rest.01.framed",
-        "docs__screenshots__01-library.jpg.rest.02.framed",
-        "docs__screenshots__01-library.jpg.rest.03.framed",
-        "docs__screenshots__01-library.jpg.rest.04.framed",
-        "docs__screenshots__01-library.jpg.rest.05.framed"
+        "docs__screenshots__01-library.jpg.00.b64",
+        "docs__screenshots__01-library.jpg.01.b64"
       ],
       "sha256": "c13d87f997c918084eb7bd83df62c30c5103ae6b22c9b13e8fa1a7cfe9959514",
       "size": 34153
@@ -33,30 +20,8 @@
     {
       "path": "docs/screenshots/02-citation-in-document.jpg",
       "parts": [
-        "docs__screenshots__02-citation-in-document.jpg.00.framed",
-        "docs__screenshots__02-citation-in-document.jpg.01.framed",
-        "docs__screenshots__02-citation-in-document.jpg.02.framed",
-        "docs__screenshots__02-citation-in-document.jpg.03.framed",
-        "docs__screenshots__02-citation-in-document.jpg.04.framed",
-        "docs__screenshots__02-citation-in-document.jpg.05.framed",
-        "docs__screenshots__02-citation-in-document.jpg.06.framed",
-        "docs__screenshots__02-citation-in-document.jpg.07.framed",
-        "docs__screenshots__02-citation-in-document.jpg.08.framed",
-        "docs__screenshots__02-citation-in-document.jpg.09.framed",
-        "docs__screenshots__02-citation-in-document.jpg.10.framed",
-        "docs__screenshots__02-citation-in-document.jpg.11.framed",
-        "docs__screenshots__02-citation-in-document.jpg.12.framed",
-        "docs__screenshots__02-citation-in-document.jpg.13.framed",
-        "docs__screenshots__02-citation-in-document.jpg.14.framed",
-        "docs__screenshots__02-citation-in-document.jpg.15.framed",
-        "docs__screenshots__02-citation-in-document.jpg.16.framed",
-        "docs__screenshots__02-citation-in-document.jpg.17.framed",
-        "docs__screenshots__02-citation-in-document.jpg.18.framed",
-        "docs__screenshots__02-citation-in-document.jpg.19.framed",
-        "docs__screenshots__02-citation-in-document.jpg.20.framed",
-        "docs__screenshots__02-citation-in-document.jpg.21.framed",
-        "docs__screenshots__02-citation-in-document.jpg.22.framed",
-        "docs__screenshots__02-citation-in-document.jpg.23.framed"
+        "docs__screenshots__02-citation-in-document.jpg.00.b64",
+        "docs__screenshots__02-citation-in-document.jpg.01.b64"
       ],
       "sha256": "d257a01cbba040af595b3a8261319b71d5e9c7477c770cad8e718c58f0f1f364",
       "size": 49697
@@ -64,28 +29,8 @@
     {
       "path": "docs/screenshots/03-live-enclave-verification.jpg",
       "parts": [
-        "docs__screenshots__03-live-enclave-verification.jpg.00.framed",
-        "docs__screenshots__03-live-enclave-verification.jpg.01.framed",
-        "docs__screenshots__03-live-enclave-verification.jpg.02.framed",
-        "docs__screenshots__03-live-enclave-verification.jpg.03.framed",
-        "docs__screenshots__03-live-enclave-verification.jpg.04.framed",
-        "docs__screenshots__03-live-enclave-verification.jpg.05.framed",
-        "docs__screenshots__03-live-enclave-verification.jpg.06.framed",
-        "docs__screenshots__03-live-enclave-verification.jpg.07.framed",
-        "docs__screenshots__03-live-enclave-verification.jpg.08.framed",
-        "docs__screenshots__03-live-enclave-verification.jpg.09.framed",
-        "docs__screenshots__03-live-enclave-verification.jpg.10.framed",
-        "docs__screenshots__03-live-enclave-verification.jpg.11.framed",
-        "docs__screenshots__03-live-enclave-verification.jpg.12.framed",
-        "docs__screenshots__03-live-enclave-verification.jpg.13.framed",
-        "docs__screenshots__03-live-enclave-verification.jpg.14.framed",
-        "docs__screenshots__03-live-enclave-verification.jpg.15.framed",
-        "docs__screenshots__03-live-enclave-verification.jpg.16.framed",
-        "docs__screenshots__03-live-enclave-verification.jpg.17.framed",
-        "docs__screenshots__03-live-enclave-verification.jpg.18.framed",
-        "docs__screenshots__03-live-enclave-verification.jpg.19.framed",
-        "docs__screenshots__03-live-enclave-verification.jpg.20.framed",
-        "docs__screenshots__03-live-enclave-verification.jpg.21.framed"
+        "docs__screenshots__03-live-enclave-verification.jpg.00.b64",
+        "docs__screenshots__03-live-enclave-verification.jpg.01.b64"
       ],
       "sha256": "6d03162cb65c957717eb4dc2ad846b62b3eb8f31d2fe11787e384a10ed90e5c5",
       "size": 45357
@@ -93,20 +38,7 @@
     {
       "path": "docs/screenshots/04-ask-without-key.jpg",
       "parts": [
-        "docs__screenshots__04-ask-without-key.jpg.00.framed",
-        "docs__screenshots__04-ask-without-key.jpg.01.framed",
-        "docs__screenshots__04-ask-without-key.jpg.02.framed",
-        "docs__screenshots__04-ask-without-key.jpg.03.framed",
-        "docs__screenshots__04-ask-without-key.jpg.04.framed",
-        "docs__screenshots__04-ask-without-key.jpg.05.framed",
-        "docs__screenshots__04-ask-without-key.jpg.06.framed",
-        "docs__screenshots__04-ask-without-key.jpg.07.framed",
-        "docs__screenshots__04-ask-without-key.jpg.08.framed",
-        "docs__screenshots__04-ask-without-key.jpg.09.framed",
-        "docs__screenshots__04-ask-without-key.jpg.10.framed",
-        "docs__screenshots__04-ask-without-key.jpg.11.framed",
-        "docs__screenshots__04-ask-without-key.jpg.12.framed",
-        "docs__screenshots__04-ask-without-key.jpg.13.framed"
+        "docs__screenshots__04-ask-without-key.jpg.00.b64"
       ],
       "sha256": "44133de30f23b3ff10f17d3bdecd9d577d1bab6bc96a76405fb6062c3267f49a",
       "size": 29061
@@ -114,28 +46,8 @@
     {
       "path": "docs/screenshots/05-cited-answer.jpg",
       "parts": [
-        "docs__screenshots__05-cited-answer.jpg.00.framed",
-        "docs__screenshots__05-cited-answer.jpg.01.framed",
-        "docs__screenshots__05-cited-answer.jpg.02.framed",
-        "docs__screenshots__05-cited-answer.jpg.03.framed",
-        "docs__screenshots__05-cited-answer.jpg.04.framed",
-        "docs__screenshots__05-cited-answer.jpg.05.framed",
-        "docs__screenshots__05-cited-answer.jpg.06.framed",
-        "docs__screenshots__05-cited-answer.jpg.07.framed",
-        "docs__screenshots__05-cited-answer.jpg.08.framed",
-        "docs__screenshots__05-cited-answer.jpg.09.framed",
-        "docs__screenshots__05-cited-answer.jpg.10.framed",
-        "docs__screenshots__05-cited-answer.jpg.11.framed",
-        "docs__screenshots__05-cited-answer.jpg.12.framed",
-        "docs__screenshots__05-cited-answer.jpg.13.framed",
-        "docs__screenshots__05-cited-answer.jpg.14.framed",
-        "docs__screenshots__05-cited-answer.jpg.15.framed",
-        "docs__screenshots__05-cited-answer.jpg.16.framed",
-        "docs__screenshots__05-cited-answer.jpg.17.framed",
-        "docs__screenshots__05-cited-answer.jpg.18.framed",
-        "docs__screenshots__05-cited-answer.jpg.19.framed",
-        "docs__screenshots__05-cited-answer.jpg.20.framed",
-        "docs__screenshots__05-cited-answer.jpg.21.framed"
+        "docs__screenshots__05-cited-answer.jpg.00.b64",
+        "docs__screenshots__05-cited-answer.jpg.01.b64"
       ],
       "sha256": "b23880c7783098dc32ad1e2f88d7bb1fc864856cbdf2a6b3bae033bcae0d55dd",
       "size": 46013
@@ -143,28 +55,8 @@
     {
       "path": "docs/screenshots/06-verified-private-inference.jpg",
       "parts": [
-        "docs__screenshots__06-verified-private-inference.jpg.00.framed",
-        "docs__screenshots__06-verified-private-inference.jpg.01.framed",
-        "docs__screenshots__06-verified-private-inference.jpg.02.framed",
-        "docs__screenshots__06-verified-private-inference.jpg.03.framed",
-        "docs__screenshots__06-verified-private-inference.jpg.04.framed",
-        "docs__screenshots__06-verified-private-inference.jpg.05.framed",
-        "docs__screenshots__06-verified-private-inference.jpg.06.framed",
-        "docs__screenshots__06-verified-private-inference.jpg.07.framed",
-        "docs__screenshots__06-verified-private-inference.jpg.08.framed",
-        "docs__screenshots__06-verified-private-inference.jpg.09.framed",
-        "docs__screenshots__06-verified-private-inference.jpg.10.framed",
-        "docs__screenshots__06-verified-private-inference.jpg.11.framed",
-        "docs__screenshots__06-verified-private-inference.jpg.12.framed",
-        "docs__screenshots__06-verified-private-inference.jpg.13.framed",
-        "docs__screenshots__06-verified-private-inference.jpg.14.framed",
-        "docs__screenshots__06-verified-private-inference.jpg.15.framed",
-        "docs__screenshots__06-verified-private-inference.jpg.16.framed",
-        "docs__screenshots__06-verified-private-inference.jpg.17.framed",
-        "docs__screenshots__06-verified-private-inference.jpg.18.framed",
-        "docs__screenshots__06-verified-private-inference.jpg.19.framed",
-        "docs__screenshots__06-verified-private-inference.jpg.20.framed",
-        "docs__screenshots__06-verified-private-inference.jpg.21.framed"
+        "docs__screenshots__06-verified-private-inference.jpg.00.b64",
+        "docs__screenshots__06-verified-private-inference.jpg.01.b64"
       ],
       "sha256": "f13c124427a4754de4aef6344540436d66f249803fc58193567a75cc30e1fe1d",
       "size": 44546

@@ -1,39 +1,34 @@
 #!/usr/bin/env node
-import { existsSync, mkdirSync, readFileSync, writeFileSync, readdirSync } from "node:fs";
-import { dirname, join } from "node:path";
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
+import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import { spawnSync } from "node:child_process";
-
+import { createHash } from "node:crypto";
+import { execSync } from "node:child_process";
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
-
-// Prefer durable offline ingest chunks when present (no network).
-{
-  const apply = join(root, "scripts", "apply-ingest.mjs");
-  if (existsSync(apply) && existsSync(join(root, "_ingest"))) {
-    const r = spawnSync(process.execPath, [apply], { stdio: "inherit" });
-    if (r.status) process.exit(r.status ?? 1);
-  }
+const partsDir = join(root, "asset-parts");
+const manifestPath = join(partsDir, "manifest.json");
+const base = "https://raw.githubusercontent.com/nehaiqoo-source/morrow/main";
+function sha(buf) { return createHash("sha256").update(buf).digest("hex"); }
+function fetchFile(rel) {
+  mkdirSync(dirname(join(root, rel)), { recursive: true });
+  execSync(`curl -fsSL "${base}/${rel}" -o "${rel}"`, { cwd: root, stdio: "inherit" });
 }
-
-// package-lock from parts
-const lockOut = join(root, "package-lock.json");
-const lockParts = join(root, "package-lock.parts");
-if (!existsSync(lockOut) && existsSync(lockParts)) {
-  const parts = readdirSync(lockParts).filter((f) => /^\d{2}$/.test(f)).sort();
-  writeFileSync(lockOut, parts.map((f) => readFileSync(join(lockParts, f), "utf8")).join(""));
-  console.log(`assembled package-lock.json from ${parts.length} parts`);
-}
-
-// binaries from asset-parts + manifest
-const manifestPath = join(root, "asset-parts", "manifest.json");
 if (existsSync(manifestPath)) {
   const manifest = JSON.parse(readFileSync(manifestPath, "utf8"));
-  for (const entry of manifest) {
-    const out = join(root, entry.path);
-    if (existsSync(out) && !process.env.FORCE_ASSEMBLE) continue;
-    mkdirSync(dirname(out), { recursive: true });
-    const b64 = entry.parts.map((p) => readFileSync(join(root, p), "utf8")).join("");
-    writeFileSync(out, Buffer.from(b64, "base64"));
-    console.log(`assembled ${entry.path} (${Buffer.from(b64, "base64").length} bytes)`);
+  for (const item of manifest.binaries || []) {
+    const dest = join(root, item.path);
+    if (existsSync(dest) && sha(readFileSync(dest)) === item.sha256) continue;
+    const missing = (item.parts || []).some((f) => !existsSync(join(partsDir, f)));
+    if (missing) { fetchFile(item.path); continue; }
+    mkdirSync(dirname(dest), { recursive: true });
+    const buf = Buffer.from(item.parts.map((f) => readFileSync(join(partsDir, f), "utf8")).join(""), "base64");
+    if (sha(buf) !== item.sha256) { console.error("checksum mismatch", item.path); process.exit(1); }
+    writeFileSync(dest, buf);
+    console.log(`assembled ${item.path} (${buf.length} bytes)`);
   }
+  process.exit(0);
+}
+for (const rel of ["src/app/favicon.ico","docs/screenshots/01-library.jpg","docs/screenshots/02-citation-in-document.jpg","docs/screenshots/03-live-enclave-verification.jpg","docs/screenshots/04-ask-without-key.jpg","docs/screenshots/05-cited-answer.jpg","docs/screenshots/06-verified-private-inference.jpg"]) {
+  const p = join(root, rel);
+  if (!existsSync(p) || readFileSync(p).length < 1000) fetchFile(rel);
 }

