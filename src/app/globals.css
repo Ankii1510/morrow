@@ -1,0 +1,216 @@
+@import "tailwindcss";
+@import "@fontsource-variable/newsreader/opsz.css";
+@import "@fontsource-variable/newsreader/opsz-italic.css";
+
+/*
+ * Morrow design tokens. One light, paper-like theme: warm neutrals, ink text,
+ * a single moss accent for trust/verification and amber for cited passages.
+ */
+@theme {
+  --color-paper: #f4f1e9;
+  --color-surface: #fbfaf6;
+  --color-sunk: #ece8dd;
+  --color-ink: #1c1b18;
+  --color-ink-2: #55524a;
+  --color-ink-3: #827e73;
+  --color-rule: #dcd6c8;
+  --color-rule-strong: #c4bdac;
+  --color-moss: #2f4a3a;
+  --color-moss-2: #3e6350;
+  --color-moss-soft: #e3eadf;
+  --color-amber: #f1dfa8;
+  --color-amber-soft: #f8efd2;
+  --color-amber-ink: #6b5310;
+  --color-clay: #9a3d2e;
+  --color-clay-soft: #f4e2dc;
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-serif: "Newsreader Variable", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+html {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.55;
+  font-feature-settings: "ss01", "cv11";
+}
+
+::selection {
+  background: var(--color-amber);
+}
+
+/* One consistent, visible keyboard focus treatment everywhere. */
+:focus-visible {
+  outline: 2px solid var(--color-moss);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+@layer components {
+  .display {
+    font-family: var(--font-serif);
+    font-weight: 420;
+    letter-spacing: -0.012em;
+    line-height: 1.12;
+  }
+  .reading {
+    font-family: var(--font-serif);
+    font-size: 1.14rem;
+    line-height: 1.62;
+    font-variation-settings: "opsz" 16;
+  }
+  .eyebrow {
+    font-size: 0.72rem;
+    font-weight: 560;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--color-ink-3);
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    height: 2.25rem;
+    padding: 0 0.9rem;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 520;
+    white-space: nowrap;
+    transition: background-color 120ms, border-color 120ms, color 120ms;
+    cursor: pointer;
+  }
+  .btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  .btn-primary {
+    background: var(--color-ink);
+    color: var(--color-surface);
+  }
+  .btn-primary:hover:not(:disabled) {
+    background: #33312b;
+  }
+  .btn-quiet {
+    border: 1px solid var(--color-rule-strong);
+    background: transparent;
+    color: var(--color-ink);
+  }
+  .btn-quiet:hover:not(:disabled) {
+    background: var(--color-sunk);
+  }
+  .btn-danger {
+    border: 1px solid #d9b3a9;
+    color: var(--color-clay);
+  }
+  .btn-danger:hover:not(:disabled) {
+    background: var(--color-clay-soft);
+  }
+  .btn-ghost {
+    color: var(--color-ink-2);
+    padding: 0 0.5rem;
+  }
+  .btn-ghost:hover:not(:disabled) {
+    background: var(--color-sunk);
+    color: var(--color-ink);
+  }
+  .field {
+    width: 100%;
+    height: 2.5rem;
+    padding: 0 0.75rem;
+    border: 1px solid var(--color-rule-strong);
+    border-radius: 6px;
+    background: var(--color-surface);
+    font-size: 0.95rem;
+  }
+  .field::placeholder {
+    color: var(--color-ink-3);
+  }
+  textarea.field {
+    height: auto;
+    padding: 0.7rem 0.75rem;
+    line-height: 1.5;
+    resize: none;
+  }
+  .rule {
+    border-top: 1px solid var(--color-rule);
+  }
+  .link {
+    color: var(--color-moss);
+    text-decoration: underline;
+    text-decoration-color: color-mix(in srgb, var(--color-moss) 35%, transparent);
+    text-underline-offset: 3px;
+  }
+  .link:hover {
+    text-decoration-color: var(--color-moss);
+  }
+  .cite {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.35rem;
+    height: 1.25rem;
+    margin: 0 0.1rem;
+    padding: 0 0.3rem;
+    border-radius: 4px;
+    background: var(--color-amber-soft);
+    border: 1px solid #e3d08e;
+    color: var(--color-amber-ink);
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 600;
+    line-height: 1;
+    vertical-align: 0.18em;
+    cursor: pointer;
+  }
+  .cite:hover,
+  .cite[aria-pressed="true"] {
+    background: var(--color-amber);
+  }
+  mark.passage {
+    background: var(--color-amber-soft);
+    box-shadow: inset 0 -0.55em 0 var(--color-amber);
+    color: inherit;
+    border-radius: 2px;
+    scroll-margin: 7rem;
+  }
+  mark.term {
+    background: var(--color-amber);
+    color: inherit;
+    border-radius: 2px;
+    padding: 0 1px;
+  }
+  .sheet {
+    background: var(--color-surface);
+    border: 1px solid var(--color-rule);
+    border-radius: 4px;
+  }
+  dialog.modal {
+    margin: auto;
+    width: min(30rem, calc(100vw - 2rem));
+    border: 1px solid var(--color-rule-strong);
+    border-radius: 8px;
+    background: var(--color-surface);
+    color: var(--color-ink);
+    padding: 1.5rem;
+    box-shadow: 0 24px 60px -20px rgb(28 27 24 / 0.35);
+  }
+  dialog.modal::backdrop {
+    background: rgb(28 27 24 / 0.32);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
