@@ -1,0 +1,77 @@
+[
+  {
+    "path": "src/app/favicon.ico",
+    "parts": [
+      "asset-parts/src__app__favicon.ico.00.b64",
+      "asset-parts/src__app__favicon.ico.01.b64"
+    ],
+    "size": 15086
+  },
+  {
+    "path": "docs/screenshots/04-ask-without-key.jpg",
+    "parts": [
+      "asset-parts/docs__screenshots__04-ask-without-key.jpg.00.b64",
+      "asset-parts/docs__screenshots__04-ask-without-key.jpg.01.b64",
+      "asset-parts/docs__screenshots__04-ask-without-key.jpg.02.b64",
+      "asset-parts/docs__screenshots__04-ask-without-key.jpg.03.b64"
+    ],
+    "size": 29061
+  },
+  {
+    "path": "docs/screenshots/01-library.jpg",
+    "parts": [
+      "asset-parts/docs__screenshots__01-library.jpg.00.b64",
+      "asset-parts/docs__screenshots__01-library.jpg.01.b64",
+      "asset-parts/docs__screenshots__01-library.jpg.02.b64",
+      "asset-parts/docs__screenshots__01-library.jpg.03.b64"
+    ],
+    "size": 34153
+  },
+  {
+    "path": "docs/screenshots/06-verified-private-inference.jpg",
+    "parts": [
+      "asset-parts/docs__screenshots__06-verified-private-inference.jpg.00.b64",
+      "asset-parts/docs__screenshots__06-verified-private-inference.jpg.01.b64",
+      "asset-parts/docs__screenshots__06-verified-private-inference.jpg.02.b64",
+      "asset-parts/docs__screenshots__06-verified-private-inference.jpg.03.b64",
+      "asset-parts/docs__screenshots__06-verified-private-inference.jpg.04.b64"
+    ],
+    "size": 44546
+  },
+  {
+    "path": "docs/screenshots/03-live-enclave-verification.jpg",
+    "parts": [
+      "asset-parts/docs__screenshots__03-live-enclave-verification.jpg.00.b64",
+      "asset-parts/docs__screenshots__03-live-enclave-verification.jpg.01.b64",
+      "asset-parts/docs__screenshots__03-live-enclave-verification.jpg.02.b64",
+      "asset-parts/docs__screenshots__03-live-enclave-verification.jpg.03.b64",
+      "asset-parts/docs__screenshots__03-live-enclave-verification.jpg.04.b64",
+      "asset-parts/docs__screenshots__03-live-enclave-verification.jpg.05.b64"
+    ],
+    "size": 45357
+  },
+  {
+    "path": "docs/screenshots/05-cited-answer.jpg",
+    "parts": [
+      "asset-parts/docs__screenshots__05-cited-answer.jpg.00.b64",
+      "asset-parts/docs__screenshots__05-cited-answer.jpg.01.b64",
+      "asset-parts/docs__screenshots__05-cited-answer.jpg.02.b64",
+      "asset-parts/docs__screenshots__05-cited-answer.jpg.03.b64",
+      "asset-parts/docs__screenshots__05-cited-answer.jpg.04.b64",
+      "asset-parts/docs__screenshots__05-cited-answer.jpg.05.b64"
+    ],
+    "size": 46013
+  },
+  {
+    "path": "docs/screenshots/02-citation-in-document.jpg",
+    "parts": [
+      "asset-parts/docs__screenshots__02-citation-in-document.jpg.00.b64",
+      "asset-parts/docs__screenshots__02-citation-in-document.jpg.01.b64",
+      "asset-parts/docs__screenshots__02-citation-in-document.jpg.02.b64",
+      "asset-parts/docs__screenshots__02-citation-in-document.jpg.03.b64",
+      "asset-parts/docs__screenshots__02-citation-in-document.jpg.04.b64",
+      "asset-parts/docs__screenshots__02-citation-in-document.jpg.05.b64"
+    ],
+    "size": 49697
+  }
+]

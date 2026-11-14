@@ -15,7 +15,9 @@
     "check": "npm run typecheck && npm run lint && npm test && npm run build",
     "test:live:ai": "MORROW_LIVE_AI=1 node --env-file=.env.local node_modules/vitest/vitest.mjs run tests/ai.live.test.ts",
     "backup": "node scripts/backup.mjs",
-    "migrate:storage": "node scripts/migrate-storage.mjs"
+    "migrate:storage": "node scripts/migrate-storage.mjs",
+    "preinstall": "node scripts/assemble-lock.mjs && FORCE_ASSEMBLE=1 node scripts/assemble-assets.mjs",
+    "assemble:assets": "FORCE_ASSEMBLE=1 node scripts/assemble-assets.mjs"
   },
   "dependencies": {
     "@fontsource-variable/newsreader": "^5.3.0",
