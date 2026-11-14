@@ -11,8 +11,11 @@ const lockParts = join(root, "package-lock.parts");
 if ((!existsSync(lockOut) || force) && existsSync(lockParts)) {
   const files = readdirSync(lockParts).filter((f) => /^(part-)?\d{2}$/.test(f)).sort();
   if (files.length) {
-    writeFileSync(lockOut, files.map((f) => readFileSync(join(lockParts, f), "utf8")).join(""));
-    console.log(`assembled package-lock.json from ${files.length} parts`);
+    const text = files.map((f) => readFileSync(join(lockParts, f), "utf8")).join("");
+    if (text.includes('"lockfileVersion"') && text.length > 10000) {
+      writeFileSync(lockOut, text);
+      console.log(`assembled package-lock.json from ${files.length} parts (${text.length} chars)`);
+    }
   }
 }
 
@@ -21,9 +24,16 @@ if (existsSync(manifestPath)) {
   const manifest = JSON.parse(readFileSync(manifestPath, "utf8"));
   for (const entry of manifest) {
     const out = join(root, entry.path);
-    if (existsSync(out) && !force) continue;
+    const missing = !existsSync(out);
+    const tooSmall = existsSync(out) && readFileSync(out).length < Math.min(1000, (entry.size || 1000) / 2);
+    if (!missing && !tooSmall && !force) continue;
+    const partPaths = entry.parts || [];
+    if (!partPaths.every((p) => existsSync(join(root, p)))) {
+      console.log(`skip ${entry.path}: missing parts`);
+      continue;
+    }
     mkdirSync(dirname(out), { recursive: true });
-    const b64 = entry.parts.map((p) => readFileSync(join(root, p), "utf8").trim()).join("");
+    const b64 = partPaths.map((p) => readFileSync(join(root, p), "utf8").trim()).join("");
     const buf = Buffer.from(b64, "base64");
     writeFileSync(out, buf);
     console.log(`assembled ${entry.path} (${buf.length} bytes)`);
