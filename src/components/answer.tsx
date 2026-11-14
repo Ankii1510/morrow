@@ -9,7 +9,7 @@ import { Mono, Note } from "./ui";
 /** Render answer text with citation markers as buttons. No HTML from the model is ever injected. */
 function AnswerText({ text, active, onCite, valid }: { text: string; active: number | null; onCite: (n: number) => void; valid: Set<number> }) {
   const inline = (s: string, key: string) =>
-    s.split(/(\[[\d]{1,3}\]|\*\*[^*]+\*\*)/g).map((part, i) => {
+    s.split(/(\[\d{1,3}\]|\*\*[^*]+\*\*)/g).map((part, i) => {
       const c = /^\[(\d{1,3})\]$/.exec(part);
       if (c && valid.has(Number(c[1]))) {
         const n = Number(c[1]);
