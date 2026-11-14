@@ -1,0 +1,6 @@
+{
+  "name": "morrow",
+  "version": "0.1.0",
+  "lockfileVersion": 3,
+  "_note": "Incomplete part stub. Run: bash scripts/fetch-large-assets.sh (or npm install) to obtain the full package-lock.json from the public upstream mirror."
+}
