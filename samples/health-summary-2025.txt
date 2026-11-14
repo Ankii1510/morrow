@@ -1,0 +1,29 @@
+ANNUAL HEALTH SUMMARY
+Fictional sample document for Morrow. The patient, clinic and all values are invented.
+
+Patient: Mira Okonkwo-Reyes
+Clinic: Westmere Family Practice
+Visit date: 12 September 2025
+Clinician: Dr. Anselm Varga
+
+VITALS
+
+Blood pressure was 118 over 76. Resting heart rate was 62 beats per minute. Weight was 64 kilograms, unchanged from last year.
+
+LAB RESULTS
+
+Total cholesterol was 187 mg/dL. LDL cholesterol was 112 mg/dL, slightly above the target of 100. HDL cholesterol was 58 mg/dL. Fasting glucose was 91 mg/dL, which is in the normal range.
+
+Vitamin D was 22 ng/mL, which is below the recommended level of 30. Ferritin was 41 ng/mL, in the normal range.
+
+MEDICATIONS AND SUPPLEMENTS
+
+The patient takes cetirizine 10 mg as needed for seasonal allergies. Dr. Varga recommended starting vitamin D3 at 2000 IU daily and rechecking the level in three months.
+
+ALLERGIES
+
+Penicillin causes a rash. No known food allergies.
+
+FOLLOW-UP
+
+Repeat the vitamin D test in December 2025. Repeat the cholesterol panel in twelve months. The tetanus booster is due in 2027. The patient was advised to keep up 150 minutes of moderate exercise per week and to reduce saturated fat to bring LDL under 100.
