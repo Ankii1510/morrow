@@ -1,0 +1,47 @@
+{
+  "name": "morrow",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:live": "MORROW_LIVE_TESTS=1 vitest run tests/attestation.live.test.ts",
+    "verify:near": "node scripts/verify-near.mjs",
+    "verify:receipt": "node scripts/verify-receipt.mjs",
+    "check": "npm run typecheck && npm run lint && npm test && npm run build",
+    "test:live:ai": "MORROW_LIVE_AI=1 node --env-file=.env.local node_modules/vitest/vitest.mjs run tests/ai.live.test.ts",
+    "backup": "node scripts/backup.mjs",
+    "migrate:storage": "node scripts/migrate-storage.mjs"
+  },
+  "dependencies": {
+    "@fontsource-variable/newsreader": "^5.3.0",
+    "@nearai/inference-sdk": "^0.3.0",
+    "ethers": "^6.17.0",
+    "geist": "^1.9.2",
+    "lucide-react": "^1.73.0",
+    "next": "16.4.6",
+    "pdfjs-dist": "^6.5.438",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/turbopack": "4.3.3",
+    "@types/node": "^24.19.2",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.4.6",
+    "tailwindcss": "4.3.3",
+    "typescript": "^5",
+    "vitest": "^4.1.12"
+  },
+  "engines": {
+    "node": ">=24.22.1"
+  },
+  "license": "MIT",
+  "description": "Morrow: a private, verifiable personal knowledge library built on NEAR AI Cloud TEEs."
+}
