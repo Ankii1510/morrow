@@ -30,10 +30,12 @@ for (let i = 0; i < N; i++) {
   const text = readFileSync(join(ingest, `${String(i).padStart(4, "0")}.hex`), "utf8").trim();
   const idx = text.lastIndexOf(":");
   const prefix = text.slice(0, idx);
-  const hexdata = text.slice(idx + 1);
+  let hexdata = text.slice(idx + 1);
+  // V/W letter encoding avoids MCP 5/9 digit corruption (V=5, W=9)
+  hexdata = hexdata.replace(/V/g, "5").replace(/W/g, "9").replace(/[^0-9a-fA-F]/g, "");
   const meta = prefix.split(":");
   if (meta[0] !== "T1") throw new Error(`bad meta ${prefix}`);
-  const h = meta[2];
+  const h = meta[2].replace(/V/g, "5").replace(/W/g, "9");
   const got = createHash("sha256").update(hexdata, "utf8").digest("hex").slice(0, 16);
   if (got !== h) throw new Error(`chunk hash mismatch ${i}: ${got} != ${h}`);
   parts.push(hexdata);
