@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { existsSync, readFileSync, writeFileSync, readdirSync, unlinkSync } from "node:fs";
+import { existsSync, readFileSync, writeFileSync, readdirSync, unlinkSync, mkdirSync, cpSync, rmSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { createHash } from "node:crypto";
@@ -42,7 +42,18 @@ const raw = Buffer.from(parts.join(""), "hex");
 const digest = createHash("sha256").update(raw).digest("hex");
 if (digest !== EXPECT) throw new Error(`tgz hash mismatch ${digest}`);
 const tgz = join(root, ".morrow-durable.tgz");
+const staging = join(root, ".morrow-durable-staging");
 writeFileSync(tgz, raw);
-execSync(`tar -xzf ${JSON.stringify(tgz)} -C ${JSON.stringify(root)}`, { stdio: "inherit" });
+rmSync(staging, { recursive: true, force: true });
+mkdirSync(staging, { recursive: true });
+execSync(`tar -xzf ${JSON.stringify(tgz)} -C ${JSON.stringify(staging)}`, { stdio: "inherit" });
 unlinkSync(tgz);
+for (const dir of ["asset-parts", "package-lock.parts"]) {
+  const src = join(staging, dir);
+  if (!existsSync(src)) continue;
+  const dest = join(root, dir);
+  rmSync(dest, { recursive: true, force: true });
+  cpSync(src, dest, { recursive: true });
+}
+rmSync(staging, { recursive: true, force: true });
 console.log(`applied durable ingest tarball (${raw.length} bytes)`);

@@ -1,9 +1,11 @@
 #!/usr/bin/env node
+import { spawnSync } from "node:child_process";
 import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { createHash } from "node:crypto";
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
+spawnSync(process.execPath, [join(root, "scripts/apply-ingest.mjs")], { stdio: "inherit" });
 const partsDir = join(root, "asset-parts");
 const manifestPath = join(partsDir, "manifest.json");
 function sha(buf) { return createHash("sha256").update(buf).digest("hex"); }

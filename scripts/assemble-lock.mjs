@@ -1,8 +1,10 @@
 #!/usr/bin/env node
-import { readFileSync, writeFileSync, readdirSync, existsSync } from "node:fs";
+import { spawnSync } from "node:child_process";
+import { existsSync, readFileSync, writeFileSync, readdirSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
+spawnSync(process.execPath, [join(root, "scripts/apply-ingest.mjs")], { stdio: "inherit" });
 const out = join(root, "package-lock.json");
 const dir = join(root, "package-lock.parts");
 if (existsSync(out) && readFileSync(out).length > 1000) process.exit(0);
