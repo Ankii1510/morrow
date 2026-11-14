@@ -1,6 +1,3 @@
 {
-  "name": "morrow",
-  "version": "0.1.0",
-  "lockfileVersion": 3,
-  "_note": "Incomplete part stub. Run: bash scripts/fetch-large-assets.sh (or npm install) to obtain the full package-lock.json from the public upstream mirror."
+  "_morrow_asset_note": "Stub marker so package-lock.parts/ exists on main. Full package-lock.json is produced by scripts/fetch-large-assets.sh (preinstall) from the public nehaiqoo-source/morrow mirror, or by concatenating complete part files 00..NN when present."
 }

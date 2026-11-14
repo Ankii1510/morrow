@@ -1,5 +1,6 @@
 # package-lock.parts
 
-These parts are assembled into `package-lock.json` by `scripts/assemble-lock.mjs` / `scripts/fetch-large-assets.sh`.
+Optional split of `package-lock.json` for MCP-sized uploads.
 
-If parts are incomplete, `scripts/fetch-large-assets.sh` downloads the full lockfile from `nehaiqoo-source/morrow`.
+- Complete numeric parts (`00`, `01`, …) are concatenated by `scripts/assemble-lock.mjs`.
+- If parts are incomplete, `scripts/fetch-large-assets.sh` (npm `preinstall`) downloads the full lockfile.
