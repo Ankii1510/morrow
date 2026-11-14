@@ -1,0 +1,19 @@
+# Decisions
+
+| ID | Decision | Alternatives considered | Why |
+| --- | --- | --- | --- |
+| D-01 | **SQLite via Node's built-in `node:sqlite`**, FTS5 for keywords, embeddings as Float32 blobs searched in memory | PostgreSQL + pgvector (the stated preference); sqlite-vec; a hosted vector DB | A judge can run Morrow with `npm install` and no database server or Docker. The SDK already requires Node 24, which ships SQLite with FTS5. A personal library is thousands of passages, where an exact in-memory scan is fast and has perfect recall. A hosted vector DB would send embeddings to a non-confidential third party. Trade-off: single process, not multi-tenant scale. |
+| D-02 | **Local-first, self-hosted** as the intended deployment | A hosted multi-tenant service | The Morrow server sees plaintext and is not an enclave. Running it on the user's machine is the only configuration in which the privacy claims are complete. |
+| D-03 | **Official `@nearai/inference-sdk`** for all verification | Hand-written verification following the example repo | Verification of TDX quotes, event logs and NVIDIA evidence is security-critical and easy to get subtly wrong. The SDK is maintained by NEAR AI, also does TLS key pinning and E2EE, and exposes standalone verify functions used by the receipt verifier. |
+| D-04 | **Non-streamed answers** | Streaming tokens to the UI | Per the docs, streamed completions are re-signed by the gateway, while non-streamed ones are signed by the model enclave (`provider_tee`). The stronger proof is worth a 10 to 30 second wait, which the UI explains. |
+| D-05 | **Embeddings and reranking on NEAR AI Cloud TEE models** | Local embedding model; OpenAI embeddings | Keeps the entire pipeline inside verified enclaves with no model download. A local model would also be private but adds a large dependency and weaker multilingual quality. |
+| D-06 | **Fail closed, no fallback provider, no "unverified" mode** | Show unverified answers with a warning | A privacy product that sometimes silently skips its guarantee is worse than one that sometimes refuses. |
+| D-07 | **No smart contract, wallet or token** | Anchoring receipt hashes on NEAR; NEAR wallet login | HACKATHON.md Q-011: no mandatory integrations. A chain component would add risk and no user value today. On-chain receipt anchoring is a plausible later feature. |
+| D-08 | **Hybrid retrieval: BM25 + cosine, reciprocal rank fusion, then TEE reranker** | Vector-only; keyword-only | Exact terms (policy numbers, names) need keywords; paraphrased questions need meaning. RRF needs no score calibration. Reranking improves the top 8 that are sent to the model. |
+| D-09 | **Deleting a document deletes saved answers that quote it** | Keep answers and blank the quotes | No excerpt of a deleted document should survive. The confirmation dialog states the number of answers affected. |
+| D-10 | **Email + password accounts, even locally** | No auth on localhost | Isolation and deletion must be real for any shared or remote deployment; the cost is one sign-up screen. |
+| D-11 | **Formats: PDF with text layer, plain text, Markdown** | DOCX, HTML, images, audio | Only formats whose extraction is reliable and whose page structure can be preserved for citations. HTML is excluded deliberately (active content). |
+| D-12 | **Client-rendered pages calling JSON routes** | Server components and server actions | One security boundary (the API routes) to test, and no dependence on Next.js 16's newer caching modes. |
+| D-13 | **Track: `privacy` only** | Adding `security` or `open` | See PRIVACY_TRACK_ANALYSIS.md. |
+| D-14 | **Bundled fonts (Newsreader, Geist), no CDN** | Google Fonts at runtime | The browser must contact no third party; builds also work offline. |
+| D-15 | **Attestation reuse capped at 10 minutes** | SDK default of 60 | Shorter exposure to a changed deployment for roughly 10 seconds of extra latency per window. |
