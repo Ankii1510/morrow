@@ -149,7 +149,7 @@ describe("server-wide limits", () => {
     expect(r.data.error.code).toBe("app_quota_exceeded");
     expect(r.data.error.message).toMatch(/This Morrow server/);
     process.env.MORROW_APP_DAILY_TOKENS = "1";
-    expect(errCode(() => assertQuota(ids.cat, "search"))).toBe("app_quota_exceeded");
+    expect(errCode(() => assertQuota(await0(ids.cat), "search"))).toBe("app_quota_exceeded");
   });
 
   it("cannot be reset by deleting an account and signing up again", async () => {
@@ -192,3 +192,7 @@ describe("provider payment and quota errors", () => {
     for (const s of [401, 402, 429]) expect(providerStatusError(s, "x").message).not.toMatch(/NEARAI_API_KEY=|sk-/);
   });
 });
+
+function await0(id: string): string {
+  return id;
+}
