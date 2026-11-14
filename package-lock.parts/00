@@ -1,3 +1,0 @@
-{
-  "_morrow_asset_note": "Stub marker so package-lock.parts/ exists on main. Full package-lock.json is produced by scripts/fetch-large-assets.sh (preinstall) from the public nehaiqoo-source/morrow mirror, or by concatenating complete part files 00..NN when present."
-}
